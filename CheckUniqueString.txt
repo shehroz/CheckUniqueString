@@ -1,0 +1,35 @@
+static void Main(string[] args)
+        {
+            string str = "aab";//aab
+            if (IsUniqueString(str))
+                Console.WriteLine("String is unique");
+            else
+                Console.WriteLine("String is not unique");
+
+            Console.ReadKey();
+
+        }
+        public static bool IsUniqueString(string str)
+        {
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                for (int j = i + 1; j < str.Length; j++)
+                {
+                    if (str[i] == str[j])
+                        return false;
+                }
+            }
+            return true;
+        }
+        public static bool IsUniqueStringOptimized(string str)
+        {
+            Dictionary<char, char> dic = new Dictionary<char, char>();
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (dic.ContainsKey(str[i]))
+                    return false;
+                else
+                    dic.Add(str[i], Convert.ToChar(i.ToString()));
+            }
+            return true;
+        }
